@@ -1,0 +1,21 @@
+{
+  "name": "j2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run && npm run test:e2e",
+    "test:e2e": "playwright test",
+    "start": "serve . -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.6",
+    "serve": "^14.2.1",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.1"
+  }
+}
