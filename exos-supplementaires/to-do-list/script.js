@@ -1,5 +1,8 @@
 const form = document.querySelector("form");
+const list = document.querySelector("#list");
+
 form.addEventListener("submit", handleSubmit);
+list.addEventListener("click", deleteToDo);
 
 const toDoListArray = [
   "Faire la vaisselle",
@@ -8,36 +11,41 @@ const toDoListArray = [
   "Faire une sieste",
 ];
 
+function deleteToDo(event) {
+  const indexToDelete = event.target.id;
+  if (indexToDelete === "") {
+    return;
+  }
+  toDoListArray.splice(Number(indexToDelete), 1);
+  updateTodoList();
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   const value = document.querySelector("#input").value;
-
   if (value === "") {
     return;
   }
-
   if (toDoListArray.includes(value)) {
     input.value = "";
     return;
   }
-
   toDoListArray.push(value);
-  injectTodoList(toDoListArray);
+  updateTodoList();
   input.value = "";
 }
 
 //
 // prends un tableau en paramètre et l'affiche sous forme de liste
-injectTodoList(toDoListArray);
+updateTodoList();
 //
 // injecte la liste
-function injectTodoList(listTextArray) {
-  const list = document.querySelector("#list");
+function updateTodoList() {
   const elementsToRemove = list.querySelectorAll("li");
   elementsToRemove.forEach((element) => {
     list.removeChild(element);
   });
-  listTextArray.forEach((itemText, index) => {
+  toDoListArray.forEach((itemText, index) => {
     const item = document.createElement("li");
     const itemLeft = document.createElement("div");
     const itemRight = document.createElement("div");
