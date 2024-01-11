@@ -1,5 +1,5 @@
 const form = document.querySelector("form");
-form.addEventListener("submit", handleClick);
+form.addEventListener("submit", handleSubmit);
 
 const toDoListArray = [
   "Faire la vaisselle",
@@ -8,12 +8,22 @@ const toDoListArray = [
   "Faire une sieste",
 ];
 
-function handleClick(event) {
+function handleSubmit(event) {
   event.preventDefault();
   const value = document.querySelector("#input").value;
-  console.log(value);
+
+  if (value === "") {
+    return;
+  }
+
+  if (toDoListArray.includes(value)) {
+    input.value = "";
+    return;
+  }
+
   toDoListArray.push(value);
   injectTodoList(toDoListArray);
+  input.value = "";
 }
 
 //
@@ -24,13 +34,19 @@ injectTodoList(toDoListArray);
 function injectTodoList(listTextArray) {
   const list = document.querySelector("#list");
   const elementsToRemove = list.querySelectorAll("li");
-  console.log(elementsToRemove);
   elementsToRemove.forEach((element) => {
     list.removeChild(element);
   });
-  listTextArray.forEach((itemText) => {
+  listTextArray.forEach((itemText, index) => {
     const item = document.createElement("li");
-    item.textContent = itemText;
+    const itemLeft = document.createElement("div");
+    const itemRight = document.createElement("div");
+    itemRight.classList.add("cross");
+    itemLeft.textContent = itemText;
+    itemRight.textContent = "X";
+    itemRight.setAttribute("id", index);
+    item.appendChild(itemLeft);
+    item.appendChild(itemRight);
     list.appendChild(item);
   });
 }
