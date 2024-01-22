@@ -9,3 +9,18 @@
 //   grandMa: Number
 // }
 // une seconde fonction dans ce fichier qui accède au localStorage
+
+let CookieNum = 0
+document.getElementById('cookie-count').innerHTML = `cookie : ${CookieNum}`
+
+
+const FG = document.getElementsByClassName('cookie-button')
+
+FG[0].addEventListener('click',
+    (e) => {
+        CookieNum ++
+        document.getElementById('cookie-count').innerHTML = `cookie : ${CookieNum}`
+    }
+    )
+
+
