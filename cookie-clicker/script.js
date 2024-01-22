@@ -52,4 +52,9 @@ function saveSession() {
   localStorage.setItem("cookieNum", cookieNum);
 }
 
-function getSession(params) {}
+function getSession(params) {
+  const cookieNumLs = localStorage.getItem("cookieNum");
+  if (cookieNumLs) {
+    cookieNum = Number(cookieNumLs);
+  }
+}
