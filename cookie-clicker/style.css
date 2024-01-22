@@ -1,0 +1,18 @@
+#cookie-count{
+    display: flex;
+    justify-content: center;
+}
+
+.cookie-div{
+    display: flex;
+    justify-content: center;
+}
+
+.cookie-button{
+    border: 0;
+    background-color: #fff;
+}
+
+.cookie-button:active{
+    scale: 1.02;
+}
