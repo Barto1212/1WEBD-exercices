@@ -17,7 +17,9 @@ async function getCityList(cityName) {
   cityArray = await data.json();
   cityArray.sort(compareCity);
   const trunc = cityArray.slice(0, 10);
-  const newCityList = trunc.map((city) => city.nom);
+  const newCityList = trunc.map(
+    (city) => `${city.nom} (${city.codeDepartement})`
+  );
   cityList = newCityList;
   render();
 }
