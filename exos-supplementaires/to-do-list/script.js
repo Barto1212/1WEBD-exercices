@@ -17,7 +17,7 @@ function deleteToDo(event) {
     return;
   }
   toDoListArray.splice(Number(indexToDelete), 1);
-  updateTodoList();
+  render();
 }
 
 function handleSubmit(event) {
@@ -31,16 +31,16 @@ function handleSubmit(event) {
     return;
   }
   toDoListArray.push(value);
-  updateTodoList();
+  render();
   input.value = "";
 }
 
 //
 // prends un tableau en paramètre et l'affiche sous forme de liste
-updateTodoList();
+render();
 //
 // injecte la liste
-function updateTodoList() {
+function render() {
   const elementsToRemove = list.querySelectorAll("li");
   elementsToRemove.forEach((element) => {
     list.removeChild(element);
