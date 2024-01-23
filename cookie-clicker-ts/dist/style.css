@@ -1,0 +1,37 @@
+#cookie-count {
+  display: flex;
+  justify-content: center;
+}
+
+.cookie-div {
+  display: flex;
+  justify-content: center;
+}
+
+.cookie-button {
+  border: 0;
+  width: 512px;
+  height: 512px;
+  border-radius: 512px;
+  background-color: inherit;
+  background-image: url("./assets/perfectCookie.png");
+  cursor: pointer;
+  transition: scale 200ms ease;
+}
+
+.cookie-button:active {
+  scale: 0.9;
+}
+#add-grand-ma {
+  width: 100%;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#add-grand-ma:hover {
+  background-color: #45a049;
+}

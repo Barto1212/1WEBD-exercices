@@ -13,40 +13,44 @@ setInterval(() => {
   saveSession();
 }, 1000);
 
-clickButton.addEventListener("click", (e) => {
+clickButton?.addEventListener("click", () => {
   addCookie(1);
   refresh();
 });
 
-addGrandMa.addEventListener("click", () => {
+addGrandMa?.addEventListener("click", () => {
   grandMaCount++;
   refresh();
 });
 
 // --------------------- FONCTIONS  ---------------------
 
-function addCookie(cookieToAdd) {
+function addCookie(cookieToAdd: number) {
   cookieNum = cookieNum + (cookieToAdd ?? 1);
 }
 
 function refresh() {
   const singuliercookie = cookieNum === 0 || cookieNum === 1;
-  document.getElementById("cookie-count").innerHTML = `cookie${
-    singuliercookie ? "" : "s"
-  } : ${cookieNum}`;
+  const cookieCount = document.getElementById("cookie-count");
+  if (cookieCount) {
+    cookieCount.innerHTML = `cookie${
+      singuliercookie ? "" : "s"
+    } : ${cookieNum}`;
+  }
   const singulierGrandMere = grandMaCount === 0 || grandMaCount === 1;
-  document.getElementById(
-    "grand-ma-count"
-  ).innerHTML = `Vous avez ${grandMaCount} grand-mère${
-    singulierGrandMere ? "" : "s"
-  }`;
+  const grandMaCountId = document.getElementById("grand-ma-count");
+  if (grandMaCountId) {
+    grandMaCountId.innerHTML = `Vous avez ${grandMaCount} grand-mère${
+      singulierGrandMere ? "" : "s"
+    }`;
+  }
 }
 
 function saveSession() {
-  localStorage.setItem("cookieNum", cookieNum);
+  localStorage.setItem("cookieNum", String(cookieNum));
 }
 
-function getSession(params) {
+function getSession() {
   const cookieNumLs = localStorage.getItem("cookieNum");
   if (cookieNumLs) {
     cookieNum = Number(cookieNumLs);
