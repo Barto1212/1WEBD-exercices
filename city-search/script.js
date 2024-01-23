@@ -1,4 +1,4 @@
-let cityList = [];
+let cityList = []; // tableau de string
 
 const list = document.querySelector("#list");
 const input = document.querySelector("#input");
@@ -17,10 +17,9 @@ async function getCityList(cityName) {
   cityArray = await data.json();
   cityArray.sort(compareCity);
   const trunc = cityArray.slice(0, 10);
-  const newCityList = trunc.map(
-    (city) => `${city.nom} (${city.codeDepartement})`
+  cityList = trunc.map(
+    (cityObject) => `${cityObject.nom} (${cityObject.codeDepartement})`
   );
-  cityList = newCityList;
   render();
 }
 
