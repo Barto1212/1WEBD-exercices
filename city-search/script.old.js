@@ -1,7 +1,9 @@
 let cityList = []; // tableau de string
 
-const list = document.querySelector("#list");
+const list = document.querySelector("#list")
 const input = document.querySelector("#input");
+
+document.
 
 input.addEventListener("keyup", (e) => {
   getCityList(e.target.value);
@@ -24,7 +26,7 @@ async function getCityList(cityName) {
 }
 
 function render() {
-  const elementsToRemove = list.querySelectorAll("li");
+  const elementsToRemove = list.querySelectorAll("li")
   elementsToRemove.forEach((element) => {
     list.removeChild(element);
   });
