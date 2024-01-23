@@ -1,9 +1,3 @@
-// un fichier avec une fonction qui enregistre dans le local storage les datas users: {
-// cookies: Number,
-//   grandMa: Number
-// }
-// une seconde fonction dans ce fichier qui accède au localStorage
-
 // --------------------- INITIALISATION  ---------------------
 let cookieNum = 0;
 let grandMaCount = 0;
