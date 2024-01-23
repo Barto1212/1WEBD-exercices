@@ -1,47 +1,37 @@
 import { getSession, saveSession } from "./sessions";
+import { render } from "./render";
+export type Score = {
+  cookie: number;
+  grandMa: number;
+};
 // --------------------- INITIALISATION  ---------------------
-let cookieNum = getSession();
-let grandMaCount = 0;
-render();
+let score: Score = {
+  cookie: getSession(),
+  grandMa: 0,
+};
+render(score);
 
 const clickButton = document.querySelector("#cookie-button");
 const addGrandMa = document.querySelector("#add-grand-ma");
 
 setInterval(() => {
-  addCookie(grandMaCount);
-  render();
-  saveSession(cookieNum);
+  addCookie(score.grandMa);
+  render(score);
+  saveSession(score.cookie);
 }, 1000);
 
 clickButton?.addEventListener("click", () => {
   addCookie(1);
-  render();
+  render(score);
 });
 
 addGrandMa?.addEventListener("click", () => {
-  grandMaCount++;
-  render();
+  score.grandMa++;
+  render(score);
 });
 
 // --------------------- FONCTIONS  ---------------------
 
 function addCookie(cookieToAdd: number) {
-  cookieNum = cookieNum + (cookieToAdd ?? 1);
-}
-
-function render() {
-  const singuliercookie = cookieNum === 0 || cookieNum === 1;
-  const cookieCount = document.getElementById("cookie-count");
-  if (cookieCount) {
-    cookieCount.innerHTML = `cookie${
-      singuliercookie ? "" : "s"
-    } : ${cookieNum}`;
-  }
-  const singulierGrandMere = grandMaCount === 0 || grandMaCount === 1;
-  const grandMaCountId = document.getElementById("grand-ma-count");
-  if (grandMaCountId) {
-    grandMaCountId.innerHTML = `Vous avez ${grandMaCount} grand-mère${
-      singulierGrandMere ? "" : "s"
-    }`;
-  }
+  score.cookie = score.cookie + (cookieToAdd ?? 1);
 }
