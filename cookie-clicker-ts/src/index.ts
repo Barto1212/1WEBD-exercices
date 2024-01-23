@@ -1,37 +1,43 @@
 import { getSession, saveSession } from "./sessions";
 import { render } from "./render";
+
 export type Score = {
   cookie: number;
   grandMa: number;
 };
 // --------------------- INITIALISATION  ---------------------
-let score: Score = {
-  cookie: getSession(),
-  grandMa: 0,
-};
-render(score);
+class CookieGame {
+  score: Score;
 
-const clickButton = document.querySelector("#cookie-button");
-const addGrandMa = document.querySelector("#add-grand-ma");
+  constructor(intialScore: Score) {
+    this.score = intialScore;
 
-setInterval(() => {
-  addCookie(score.grandMa);
-  render(score);
-  saveSession(score.cookie);
-}, 1000);
+    const clickButton = document.querySelector("#cookie-button");
+    const addGrandMa = document.querySelector("#add-grand-ma");
 
-clickButton?.addEventListener("click", () => {
-  addCookie(1);
-  render(score);
-});
+    clickButton?.addEventListener("click", () => {
+      this.incrementScore("cookie", 1);
+    });
 
-addGrandMa?.addEventListener("click", () => {
-  score.grandMa++;
-  render(score);
-});
+    addGrandMa?.addEventListener("click", () => {
+      if (this.score.cookie < 20) {
+        return;
+      }
+      this.incrementScore("cookie", -20);
+      this.incrementScore("grandMa", 1);
+    });
 
-// --------------------- FONCTIONS  ---------------------
+    setInterval(() => {
+      this.incrementScore("cookie", this.score.grandMa);
+      render(this.score);
+      saveSession(this.score);
+    }, 1000);
+  }
 
-function addCookie(cookieToAdd: number) {
-  score.cookie = score.cookie + (cookieToAdd ?? 1);
+  incrementScore(type: "grandMa" | "cookie", nbToIncrement: number) {
+    this.score[type] = this.score[type] + nbToIncrement;
+    render(this.score);
+  }
 }
+
+const game = new CookieGame(getSession());
