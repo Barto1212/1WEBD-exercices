@@ -5,7 +5,7 @@ getTrendMovies().then((movies) => {
   render(movies);
 });
 
-function render(movieList: string[]) {
+function render(movieList) {
   const list = document.querySelector("#movie-list");
 
   const elementsToRemove = list?.querySelectorAll("li");
@@ -13,9 +13,9 @@ function render(movieList: string[]) {
     list?.removeChild(element);
   });
 
-  movieList.forEach((itemText) => {
+  movieList.forEach((movieObject) => {
     const item = document.createElement("li");
-    item.textContent = itemText;
+    item.textContent = movieObject.title;
     list?.appendChild(item);
   });
 }

@@ -10,9 +10,9 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
   entry: {
-    index: "./src/index.ts",
-    search: "./src/search.ts",
-    movie: "./src/movie.ts",
+    index: "./src/index.js",
+    search: "./src/search.js",
+    movie: "./src/movie.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
