@@ -4,11 +4,9 @@
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "build": "webpack  --node-env=production",
+    "build:dev": "webpack --node-env=development",
+    "start": "webpack --node-env=development --watch"
   },
   "keywords": [],
   "author": "",
