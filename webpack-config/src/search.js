@@ -1,1 +1,6 @@
-console.log("js is runnin");
+const searchForm = document.querySelector("#search-form");
+
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+});

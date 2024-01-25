@@ -9,7 +9,7 @@ export async function getTrendMovies() {
   };
 
   const data = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/popular?language=fr&page=1",
     options
   );
   const response = await data.json();

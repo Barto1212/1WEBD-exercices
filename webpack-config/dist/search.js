@@ -1,1 +1,1 @@
-console.log("js is runnin");
+document.querySelector("#search-form").addEventListener("submit",(e=>{e.preventDefault()}));

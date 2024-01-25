@@ -11,3 +11,7 @@
   width: 1200px;
   margin: 0;
 }
+
+li {
+  list-style: none;
+}
