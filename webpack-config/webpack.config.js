@@ -10,7 +10,7 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
   entry: {
-    index: "./src/index.js",
+    index: "./src/index.ts",
     search: "./src/search.ts",
     movie: "./src/movie.ts",
   },
@@ -48,7 +48,7 @@ const config = {
       {
         test: /\.ts$/i,
         loader: "ts-loader",
-        exclude: ["/node_modules/"],
+        exclude: "/node_modules/",
       },
       {
         test: /\.js$/i,
